@@ -1,0 +1,33 @@
+{
+  "name": "ui5typescriptgenerator",
+  "version": "0.1.0",
+  "description": "A Typescript generator for UI5",
+  "main": "index.js",
+  "scripts": {
+    "test": "tests.js"
+  },
+  "author": "Andreas Pazureck",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.1.0",
+    "compression": "^1.6.2",
+    "del": "^2.2.2",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-copy": "^1.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-typescript": "^3.1.5",
+    "gulp-uglify": "^2.0.1",
+    "gulp-util": "^3.0.8",
+    "open": "0.0.5",
+    "path": "^0.12.7",
+    "serve-index": "^1.8.0",
+    "tsify": "^3.0.1",
+    "typescript": "^2.2.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

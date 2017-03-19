@@ -1,0 +1,24 @@
+{
+    "include": [
+        "src",
+        "typings"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "es5",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "sourceRoot": "src",
+        "outDir": "out"
+    },
+    "exclude": [
+        "node_modules",
+        "out",
+        "wwwroot",
+        ".vscode",
+        "bower_components"
+    ]
+}
