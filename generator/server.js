@@ -4,9 +4,9 @@ var express = require('express'),
     open = require('open'),
     serveIndex = require('serve-index'),
     port = process.env.PORT || 8080,
-    publicPath = '/out/',
-    directory = __dirname + publicPath,
-    launchUrl = 'http://localhost:' + port + publicPath,
+    publicPath = '',
+    directory = __dirname + "/out",
+    launchUrl = 'http://localhost:' + port,
     year = 60 * 60 * 24 * 365 * 1000;
 
 // use compress middleware to gzip content
@@ -16,15 +16,11 @@ app.use(compression());
 express.static.mime.default_type = "text/xml";
 
 // serve up content directory showing hidden (leading dot) files
-app.use(publicPath, express.static(directory, { maxAge: year, hidden: true }));
+app.use(publicPath, express.static(directory, { maxAge: year, dotfiles: 'allow' }));
 
 // enable directory listing
 app.use("/", serveIndex(__dirname, { 'icons': true }));
 app.use(express.static(directory, { 'dotfiles': 'allow' }));
-
-app.get('/', function(req, res) {
-    res.sendfile('./out/index.html');
-});
 // start server
 app.listen(port);
 

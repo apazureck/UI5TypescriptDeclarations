@@ -29,7 +29,7 @@
             "cozy": true
         },
         "_version": "1.1.0",
-        "rootView": "sap.ui.demo.wt.view.App",
+        "rootView": "app.view.App",
         "dependencies": {
             "minUI5Version": "1.42.0",
             "libs": {

@@ -7,18 +7,21 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     bsync = require('browser-sync'),
     reload = bsync.reload,
-    nodemon = require('gulp-nodemon');
+    nodemon = require('gulp-nodemon'),
+    sequence = require('run-sequence');
 
 // Create typescript project for compiler
 var tsProject = ts.createProject("tsconfig.json");
-var sourcespattern = 'src/**/*.{html,xml,json,css}';
+var sourcespattern = 'src/**/*.{html,xml,json,css,properties}';
 
-gulp.task('default', ['copyui5resources', 'copysources', 'compilets', 'browser-sync', 'watch']);
+gulp.task('default', function() {
+    sequence('cleanoutput', ['copyui5resources', 'copysources', 'compilets'], ['browser-sync', 'watch']);
+});
 
 // Watch task to watch source file changes
 gulp.task('watch', ['browser-sync'], function() {
     gulp.watch("src/**/*.ts", ['compilets']);
-    gulp.watch("sourcespattern", ['copysources']);
+    return gulp.watch(sourcespattern, ['copysources']);
 });
 
 // Compile typescript files (see ./tsconfig.json)
@@ -41,7 +44,8 @@ gulp.task('compilets', function() {
 
 // Copies all resource files needed from the bower folder to the output folder
 gulp.task('copyui5resources', function() {
-    gulp.src('bower_components/openui5-*/resources/**/*')
+    gutil.log("Copying UI5 resources from bower folder. Please stand by, this may take a while.");
+    return gulp.src('bower_components/openui5-*/resources/**/*')
         .pipe(rename(function(p) {
             var nda = p.dirname.split(/[\\\/]/);
             nda.splice(0, 2);
@@ -52,7 +56,7 @@ gulp.task('copyui5resources', function() {
 
 // Copy own sources located in the src folder
 gulp.task('copysources', function() {
-    gulp.src(sourcespattern)
+    return gulp.src(sourcespattern)
         .pipe(gulp.dest('out'))
         .pipe(reload({ stream: true }));
 });
@@ -62,24 +66,38 @@ gulp.task('cleanoutput', function() {
     return del.sync('out/**/*');
 });
 
+// Clean output folder
+gulp.task('resetoutput', function() {
+    return del.sync(['out/**/*', '!out/resources/**/*']);
+});
+
 // Activates browser sync
 gulp.task('browser-sync', ['nodemon'], function() {
-    bsync({
+    return bsync({
         proxy: "http://localhost:8080"
     });
 });
 
+var BROWSER_SYNC_RELOAD_DELAY = 500;
+
 // Nodemon for (nodejs) backend
 gulp.task('nodemon', function(cb) {
-    var callbackCalled = false;
-    return nodemon({ script: './server.js', watch: 'out/**/*' }).on('start', function() {
-        if (!callbackCalled) {
-            callbackCalled = true;
-            cb();
-        }
-    }).on('restart', function() {
-        setTimeout(function() {
-            reload();
-        }, 500);
-    });
+    var called = false;
+    return nodemon({
+
+            // nodemon our expressjs server
+            script: 'server.js',
+
+            // watch core server file(s) that require server restart on change
+            watch: ['server.js']
+        })
+        .on('start', function onStart() {
+            // ensure start only got called once
+            if (!called) { cb(); }
+            called = true;
+        })
+        .on('restart', function onRestart() {
+            // reload connected browsers after a slight delay
+            reload({ stream: true });
+        });
 });

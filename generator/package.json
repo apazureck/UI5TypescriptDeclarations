@@ -25,6 +25,7 @@
     "gulp-util": "^3.0.8",
     "open": "0.0.5",
     "path": "^0.12.7",
+    "run-sequence": "^1.2.2",
     "serve-index": "^1.8.0",
     "tsify": "^3.0.1",
     "typescript": "^2.2.1",
