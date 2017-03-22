@@ -26,6 +26,7 @@ gulp.task('watch', ['browser-sync'], function() {
 
 // Compile typescript files (see ./tsconfig.json)
 gulp.task('compilets', function() {
+    gutil.log("Compiling Typescript files");
     res = tsProject.src()
         .pipe(sourcemaps.init())
         .pipe(tsProject());
@@ -44,7 +45,7 @@ gulp.task('compilets', function() {
 
 // Copies all resource files needed from the bower folder to the output folder
 gulp.task('copyui5resources', function() {
-    gutil.log("Copying UI5 resources from bower folder. Please stand by, this may take a while.");
+    gutil.log("Copying UI5 resources from bower folder to out/resources. Please stand by, this may take a while.");
     return gulp.src('bower_components/openui5-*/resources/**/*')
         .pipe(rename(function(p) {
             var nda = p.dirname.split(/[\\\/]/);
@@ -56,6 +57,7 @@ gulp.task('copyui5resources', function() {
 
 // Copy own sources located in the src folder
 gulp.task('copysources', function() {
+    gutil.log("Copying source files from src to out. Check sourcepattern in gulpfile if it does not work for your source file.");
     return gulp.src(sourcespattern)
         .pipe(gulp.dest('out'))
         .pipe(reload({ stream: true }));
@@ -64,11 +66,6 @@ gulp.task('copysources', function() {
 // Clean output folder
 gulp.task('cleanoutput', function() {
     return del.sync('out/**/*');
-});
-
-// Clean output folder
-gulp.task('resetoutput', function() {
-    return del.sync(['out/**/*', '!out/resources/**/*']);
 });
 
 // Activates browser sync

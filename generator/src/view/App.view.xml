@@ -1,8 +1,9 @@
 <mvc:View 
     xmlns="sap.m" 
-    xmlns:mvc="sap.ui.core.mvc">
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="app.controller.App">
     <VBox>
-        <Label text="Test"/>
+        <Label text="Changes here asdf"/>
         <Label text="Test2"/>
         <Label text="This is a message the next day"/>
     </VBox>
