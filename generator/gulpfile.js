@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     bsync = require('browser-sync'),
     reload = bsync.reload,
     nodemon = require('gulp-nodemon'),
-    sequence = require('run-sequence');
+    sequence = require('run-sequence'),
+    exec = require('child_process').exec;
 
 // Create typescript project for compiler
 var tsProject = ts.createProject("tsconfig.json");
@@ -27,6 +28,7 @@ gulp.task('watch', ['browser-sync'], function() {
 // Compile typescript files (see ./tsconfig.json)
 gulp.task('compilets', function() {
     gutil.log("Compiling Typescript files");
+    // return exec("tsc --sourceroot ../src");
     res = tsProject.src()
         .pipe(sourcemaps.init())
         .pipe(tsProject());
@@ -35,8 +37,7 @@ gulp.task('compilets', function() {
         .pipe(sourcemaps.write('.', {
             // Return relative source map root directories per file.
             sourceRoot: function(file) {
-                var sourceFile = path.join(file.cwd, file.sourceMap.file);
-                return path.relative(path.dirname(sourceFile), file.cwd);
+                return "";
             }
         }))
         .pipe(gulp.dest('out'))

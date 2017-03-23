@@ -1,15 +1,21 @@
 {
     "version": "0.2.0",
     "configurations": [{
-        "type": "chrome",
-        "request": "launch",
-        "name": "Launch Chrome",
-        "url": "http://localhost:3000",
-        "webRoot": "${workspaceRoot}/out",
-        "sourceMaps": true,
-        "disableNetworkCache": true,
-        "sourceMapPathOverrides": {
-            "*": "../src/*"
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch Firefox",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/out"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/out",
+            "sourceMaps": true,
+            "disableNetworkCache": true
         }
-    }]
+    ]
 }

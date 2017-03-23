@@ -3,8 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="app.controller.App">
     <VBox>
-        <Label text="Changes here asdf"/>
-        <Label text="Test2"/>
-        <Label text="This is a message the next day"/>
+        <Title text="App Title: {i18n>appTitle}"/>
+        <mvc:XMLView viewName="app.view.pages.FirstPage"/>
     </VBox>
 </mvc:View>

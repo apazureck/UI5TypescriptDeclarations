@@ -14,3 +14,10 @@ sap.ui.define([
       }
    });
 });
+
+sap.ui.define(["sap/ui/core/mvc/Controller",
+      // Insert your used ui5 elements here to get them loaded
+], function (Controller: sap.ui.core.mvc.Controller) {
+    "use strict";
+    return Controller.extend("namespace.controller.name");
+});
