@@ -1,3 +1,6 @@
 {
-    "vsicons.presets.angular": false
+    "vsicons.presets.angular": false,
+    "ui5ts": {
+        "manifestlocation": "src"
+    }
 }

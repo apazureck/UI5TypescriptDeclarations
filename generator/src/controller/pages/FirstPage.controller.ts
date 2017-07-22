@@ -11,5 +11,9 @@ namespace app.controller.pages {
             console.log("Initializing FirstPage Controller");
             console.log("Testchange");
         }
+
+        testButtonPressed() {
+            
+        }
     }
 }
