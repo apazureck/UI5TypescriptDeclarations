@@ -1,0 +1,1 @@
+declare namespace sap.ui.core.dnd { export type DragSession = any; }

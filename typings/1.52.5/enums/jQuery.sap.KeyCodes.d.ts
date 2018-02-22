@@ -1,0 +1,6 @@
+declare namespace jQuery.sap {
+    /**
+    * Enumeration of key codes.
+    */
+    export type KeyCodes = "A" | "ALT" | "ARROW_DOWN" | "ARROW_LEFT" | "ARROW_RIGHT" | "ARROW_UP" | "B" | "BACKSLASH" | "BACKSPACE" | "BREAK" | "C" | "CAPS_LOCK" | "COMMA" | "CONTEXT_MENU" | "CONTROL" | "D" | "DELETE" | "DIGIT_0" | "DIGIT_1" | "DIGIT_2" | "DIGIT_3" | "DIGIT_4" | "DIGIT_5" | "DIGIT_6" | "DIGIT_7" | "DIGIT_8" | "DIGIT_9" | "DOT" | "E" | "END" | "ENTER" | "EQUALS" | "ESCAPE" | "F" | "F1" | "F10" | "F11" | "F12" | "F2" | "F3" | "F4" | "F5" | "F6" | "F7" | "F8" | "F9" | "G" | "GREAT_ACCENT" | "H" | "HOME" | "I" | "INSERT" | "J" | "K" | "L" | "M" | "MINUS" | "N" | "NUM_LOCK" | "NUMPAD_0" | "NUMPAD_1" | "NUMPAD_2" | "NUMPAD_3" | "NUMPAD_4" | "NUMPAD_5" | "NUMPAD_6" | "NUMPAD_7" | "NUMPAD_8" | "NUMPAD_9" | "NUMPAD_ASTERISK" | "NUMPAD_COMMA" | "NUMPAD_MINUS" | "NUMPAD_PLUS" | "NUMPAD_SLASH" | "O" | "OPEN_BRACKET" | "P" | "PAGE_DOWN" | "PAGE_UP" | "PIPE" | "PLUS" | "PRINT" | "Q" | "R" | "S" | "SCROLL_LOCK" | "SEMICOLON" | "SHIFT" | "SINGLE_QUOTE" | "SLASH" | "SLEEP" | "SPACE" | "T" | "TAB" | "TURN_OFF" | "U" | "V" | "W" | "WINDOWS" | "X" | "Y" | "Z";
+}

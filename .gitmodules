@@ -1,0 +1,3 @@
+[submodule "generator/parser"]
+	path = generator/parser
+	url = https://github.com/apazureck/UI5TypescriptDefinitionParser.git
