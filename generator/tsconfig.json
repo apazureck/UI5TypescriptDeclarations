@@ -9,10 +9,14 @@
         "removeComments": false,
         "sourceMap": true,
         "target": "es5",
-        "module": "commonjs",
+        "module": "amd",
         "experimentalDecorators": true,
         "sourceRoot": "src",
-        "outDir": "out"
+        "outDir": "out",
+        "lib": [
+            "es2015.promise"
+        ],
+        "importHelpers": true
     },
     "exclude": [
         "node_modules",
